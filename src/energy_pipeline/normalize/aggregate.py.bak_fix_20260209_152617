@@ -1,0 +1,123 @@
+from __future__ import annotations
+
+from dataclasses import dataclass
+from typing import Literal
+
+import pandas as pd
+
+# EU-only scope
+from energy_pipeline.config.eu import EU27_NAMES
+
+AggLevel = Literal["hour", "day", "week", "month"]
+
+FREQ_MAP: dict[AggLevel, str] = {"hour": "H", "day": "D", "week": "W-MON", "month": "MS"}
+METRIC_AGG: dict[str, str] = {"generation": "sum", "load": "sum", "net_import": "sum", "price": "mean"}
+
+
+@dataclass(frozen=True)
+class DQConfig:
+    min_coverage_pct: float = 98.0
+
+
+def _ensure_utc_ts(df: pd.DataFrame, col: str = "ts_utc") -> pd.DataFrame:
+    out = df.copy()
+    out[col] = pd.to_datetime(out[col], errors="coerce", utc=True)
+    return out
+
+
+def _expected_points(level: AggLevel, period_start: pd.Timestamp) -> int:
+    # NOTE: we aggregate from hourly source -> expected points per bucket
+    if level == "hour":
+        return 1
+    if level == "day":
+        return 24
+    if level == "week":
+        return 24 * 7
+    if level == "month":
+        next_month = period_start + pd.offsets.MonthBegin(1)
+        days = (next_month - period_start).days
+        return int(days * 24)
+    raise ValueError(f"Unknown agg level: {level}")
+
+
+def _enforce_eu_scope(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    EU-only:
+      - keep only EU27 by DISPLAY NAME (values of EU27_NAMES)
+      - force region="EU"
+    """
+    out = df.copy()
+    allowed = set(EU27_NAMES.values())
+    if "country" in out.columns:
+        out = out[out["country"].isin(allowed)].copy()
+    out["region"] = "EU"
+    return out
+
+
+def aggregate_timeseries(df: pd.DataFrame, *, level: AggLevel, dq: DQConfig) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """
+    Aggregate raw hourly time-series into chosen bucket level and compute DQ coverage.
+
+    Returns:
+      aggregated_df: time-series rows per bucket + group cols + value
+      dq_df: per bucket/country coverage_pct + issue_count
+    """
+    if df is None or df.empty:
+        return (df.copy() if df is not None else pd.DataFrame()), pd.DataFrame()
+
+    df = _ensure_utc_ts(df, "ts_utc")
+    df = df.dropna(subset=["ts_utc"])
+
+    # EU-only filter FIRST
+    df = _enforce_eu_scope(df)
+
+    if df.empty:
+        # keep schema-ish output
+        return df.copy(), pd.DataFrame()
+
+    freq = FREQ_MAP[level]
+
+    # Work on index
+    work = df.set_index("ts_utc")
+
+    group_cols = ["region", "country", "metric", "energy_source", "unit", "source_system"]
+
+    parts: list[pd.DataFrame] = []
+    for metric, agg in METRIC_AGG.items():
+        sub = work[work["metric"] == metric]
+        if sub.empty:
+            continue
+
+        g = (
+            sub.groupby(group_cols)
+            .resample(freq)
+            .agg(value=("value", agg), actual_points=("value", "count"))
+            .reset_index()
+        )
+        g["period"] = level
+        parts.append(g)
+
+    if not parts:
+        return df.iloc[0:0].copy(), pd.DataFrame()
+
+    out = pd.concat(parts, ignore_index=True)
+
+    # Expected / coverage
+    out["expected_points"] = out["ts_utc"].apply(lambda t: _expected_points(level, t))
+    out["coverage_pct"] = (out["actual_points"] / out["expected_points"]) * 100.0
+
+    out["quality_flag"] = "ok"
+    out.loc[out["coverage_pct"] < dq.min_coverage_pct, "quality_flag"] = "missing_interval"
+
+    aggregated_df = out.drop(columns=["actual_points", "expected_points", "coverage_pct"]).copy()
+
+    dq_df = (
+        out.groupby(["ts_utc", "region", "country", "period"])
+        .agg(
+            coverage_pct=("coverage_pct", "min"),
+            issue_count=("quality_flag", lambda s: int((s != "ok").sum())),
+        )
+        .reset_index()
+    )
+
+    return aggregated_df, dq_df

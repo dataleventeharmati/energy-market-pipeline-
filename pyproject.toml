@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "energy-market-pipeline"
+version = "0.1.0"
+description = "Descriptive energy market pipeline (source-based, audit-friendly)."
+requires-python = ">=3.10"
+dependencies = [
+  "pandas",
+  "pyarrow",
+  "requests",
+  "pydantic",
+  "typer",
+  "rich",
+  "matplotlib",
+  "python-dotenv",
+  "pyyaml",
+]
+
+[project.scripts]
+energy = "energy_pipeline.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

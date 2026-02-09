@@ -1,0 +1,6 @@
+eu:
+  aggregation: day
+  dq:
+    min_coverage_pct: 98
+global:
+  aggregation: month

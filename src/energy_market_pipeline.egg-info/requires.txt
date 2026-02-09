@@ -1,0 +1,9 @@
+pandas
+pyarrow
+requests
+pydantic
+typer
+rich
+matplotlib
+python-dotenv
+pyyaml

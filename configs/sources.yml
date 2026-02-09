@@ -1,0 +1,9 @@
+eu:
+  source: entsoe
+  raw_resolution: hour
+  allowed_aggregations: [hour, day, week, month]
+
+global:
+  source: ember_monthly
+  ember:
+    url: "https://ember-energy.org/data/monthly-electricity-data/"

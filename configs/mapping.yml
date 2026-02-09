@@ -1,0 +1,30 @@
+ember:
+  # ha variable/metric szövegben ezek vannak -> metric = generation
+  generation_match:
+    - "generation"
+    - "electricity generation"
+    - "power generation"
+
+  # ha ezek vannak -> metric = price (ha létezik a datasetben)
+  price_match:
+    - "price"
+    - "wholesale"
+    - "spot"
+
+  # energy_source bucketelés variable/metric szöveg alapján
+  energy_source_rules:
+    nuclear:
+      - "nuclear"
+    renewable:
+      - "renewable"
+      - "wind"
+      - "solar"
+      - "hydro"
+      - "biomass"
+      - "geothermal"
+    fossil:
+      - "fossil"
+      - "coal"
+      - "gas"
+      - "oil"
+      - "lignite"

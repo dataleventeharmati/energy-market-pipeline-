@@ -1,0 +1,2 @@
+[console_scripts]
+energy = energy_pipeline.cli:main

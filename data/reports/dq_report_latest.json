@@ -1,0 +1,201 @@
+{
+  "generated_at_utc": "2026-02-09T18:18:32Z",
+  "period": "day",
+  "ts_utc": "2024-01-08T00:00:00Z",
+  "summary": {
+    "min_coverage_pct": 4.166666666666666,
+    "countries_below_98pct": 19,
+    "total_issue_count": 19
+  },
+  "items": [
+    {
+      "region": "EU",
+      "country": "Luxembourg",
+      "ts_utc": "2024-01-07T00:00:00Z",
+      "coverage_pct": 100.0,
+      "issue_count": 0
+    },
+    {
+      "region": "EU",
+      "country": "Malta",
+      "ts_utc": "2024-01-07T00:00:00Z",
+      "coverage_pct": 100.0,
+      "issue_count": 0
+    },
+    {
+      "region": "EU",
+      "country": "Sweden",
+      "ts_utc": "2024-01-07T00:00:00Z",
+      "coverage_pct": 100.0,
+      "issue_count": 0
+    },
+    {
+      "region": "EU",
+      "country": "Italy",
+      "ts_utc": "2024-01-07T00:00:00Z",
+      "coverage_pct": 200.0,
+      "issue_count": 0
+    },
+    {
+      "region": "EU",
+      "country": "Ireland",
+      "ts_utc": "2024-01-07T00:00:00Z",
+      "coverage_pct": 200.0,
+      "issue_count": 0
+    },
+    {
+      "region": "EU",
+      "country": "Cyprus",
+      "ts_utc": "2024-01-07T00:00:00Z",
+      "coverage_pct": 100.0,
+      "issue_count": 0
+    },
+    {
+      "region": "EU",
+      "country": "Denmark",
+      "ts_utc": "2024-01-07T00:00:00Z",
+      "coverage_pct": 100.0,
+      "issue_count": 0
+    },
+    {
+      "region": "EU",
+      "country": "Germany",
+      "ts_utc": "2024-01-07T00:00:00Z",
+      "coverage_pct": 200.0,
+      "issue_count": 0
+    },
+    {
+      "region": "EU",
+      "country": "Latvia",
+      "ts_utc": "2024-01-08T00:00:00Z",
+      "coverage_pct": 4.166666666666666,
+      "issue_count": 1
+    },
+    {
+      "region": "EU",
+      "country": "Slovakia",
+      "ts_utc": "2024-01-08T00:00:00Z",
+      "coverage_pct": 4.166666666666666,
+      "issue_count": 1
+    },
+    {
+      "region": "EU",
+      "country": "Romania",
+      "ts_utc": "2024-01-08T00:00:00Z",
+      "coverage_pct": 4.166666666666666,
+      "issue_count": 1
+    },
+    {
+      "region": "EU",
+      "country": "Portugal",
+      "ts_utc": "2024-01-08T00:00:00Z",
+      "coverage_pct": 4.166666666666666,
+      "issue_count": 1
+    },
+    {
+      "region": "EU",
+      "country": "Poland",
+      "ts_utc": "2024-01-08T00:00:00Z",
+      "coverage_pct": 4.166666666666666,
+      "issue_count": 1
+    },
+    {
+      "region": "EU",
+      "country": "Netherlands",
+      "ts_utc": "2024-01-08T00:00:00Z",
+      "coverage_pct": 4.166666666666666,
+      "issue_count": 1
+    },
+    {
+      "region": "EU",
+      "country": "Lithuania",
+      "ts_utc": "2024-01-08T00:00:00Z",
+      "coverage_pct": 4.166666666666666,
+      "issue_count": 1
+    },
+    {
+      "region": "EU",
+      "country": "Hungary",
+      "ts_utc": "2024-01-08T00:00:00Z",
+      "coverage_pct": 4.166666666666666,
+      "issue_count": 1
+    },
+    {
+      "region": "EU",
+      "country": "Bulgaria",
+      "ts_utc": "2024-01-08T00:00:00Z",
+      "coverage_pct": 4.166666666666666,
+      "issue_count": 1
+    },
+    {
+      "region": "EU",
+      "country": "France",
+      "ts_utc": "2024-01-08T00:00:00Z",
+      "coverage_pct": 4.166666666666666,
+      "issue_count": 1
+    },
+    {
+      "region": "EU",
+      "country": "Finland",
+      "ts_utc": "2024-01-08T00:00:00Z",
+      "coverage_pct": 4.166666666666666,
+      "issue_count": 1
+    },
+    {
+      "region": "EU",
+      "country": "Estonia",
+      "ts_utc": "2024-01-08T00:00:00Z",
+      "coverage_pct": 4.166666666666666,
+      "issue_count": 1
+    },
+    {
+      "region": "EU",
+      "country": "Czechia",
+      "ts_utc": "2024-01-08T00:00:00Z",
+      "coverage_pct": 4.166666666666666,
+      "issue_count": 1
+    },
+    {
+      "region": "EU",
+      "country": "Croatia",
+      "ts_utc": "2024-01-08T00:00:00Z",
+      "coverage_pct": 4.166666666666666,
+      "issue_count": 1
+    },
+    {
+      "region": "EU",
+      "country": "Belgium",
+      "ts_utc": "2024-01-08T00:00:00Z",
+      "coverage_pct": 4.166666666666666,
+      "issue_count": 1
+    },
+    {
+      "region": "EU",
+      "country": "Austria",
+      "ts_utc": "2024-01-08T00:00:00Z",
+      "coverage_pct": 4.166666666666666,
+      "issue_count": 1
+    },
+    {
+      "region": "EU",
+      "country": "Slovenia",
+      "ts_utc": "2024-01-08T00:00:00Z",
+      "coverage_pct": 4.166666666666666,
+      "issue_count": 1
+    },
+    {
+      "region": "EU",
+      "country": "Greece",
+      "ts_utc": "2024-01-08T00:00:00Z",
+      "coverage_pct": 4.166666666666666,
+      "issue_count": 1
+    },
+    {
+      "region": "EU",
+      "country": "Spain",
+      "ts_utc": "2024-01-08T00:00:00Z",
+      "coverage_pct": 4.166666666666666,
+      "issue_count": 1
+    }
+  ]
+}
