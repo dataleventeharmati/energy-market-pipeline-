@@ -4,3 +4,18 @@ __pycache__/
 .env
 data/raw/
 data/reports/charts/
+
+# local secrets
+.env
+.env.*
+
+# data artifacts (generated)
+data/raw/
+data/reports/
+*.parquet
+*.log
+
+# python build artifacts
+src/*.egg-info/
+__pycache__/
+*.pyc
