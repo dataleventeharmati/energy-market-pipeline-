@@ -1,5 +1,7 @@
 # Energy Market Pipeline
 
+[![CI](https://github.com/dataleventeharmati/energy-market-pipeline-/actions/workflows/ci.yml/badge.svg)](https://github.com/dataleventeharmati/energy-market-pipeline-/actions/workflows/ci.yml)
+
 A config-driven Python data pipeline for energy-market KPI processing and lightweight dashboard generation.
 
 ## What this project does
