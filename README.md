@@ -86,3 +86,26 @@ pytest -q
 - Orchestration (Prefect/Dagster)
 - Data quality monitoring
 
+
+
+## Architecture
+
+```mermaid
+flowchart LR
+  CLI[CLI: energy_pipeline/cli.py] --> RUNNER[Runner: runner/pipeline.py]
+
+  RUNNER --> INGEST[Ingest layer: ingest/*]
+  INGEST --> NORM[Normalize/Aggregate: normalize/aggregate.py]
+  NORM --> KPI[KPI engine: kpi/compute.py]
+  KPI --> REPORT[Reports/Exports: report/*]
+
+  REPORT --> DASH[Dashboard: dashboard/app.py]
+  REPORT --> VIZ[Viz helpers: viz/*]
+
+  COMMON[(Common: config + cache + log)] --- CLI
+  COMMON --- RUNNER
+  COMMON --- INGEST
+  COMMON --- NORM
+  COMMON --- KPI
+  COMMON --- REPORT
+```
