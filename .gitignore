@@ -7,8 +7,12 @@ data/raw/
 data/reports/charts/
 
 # local secrets
+.venv/
+
 .env
 .env.*
+!.env.example
+
 
 # data artifacts (generated)
 data/raw/
