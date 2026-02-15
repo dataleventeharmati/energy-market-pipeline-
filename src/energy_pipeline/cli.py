@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import sys
 from pathlib import Path
-from typing import Optional
 
 import typer
 
@@ -14,10 +13,10 @@ app = typer.Typer(add_completion=False, help="Energy Market Pipeline (descriptiv
 @app.callback(invoke_without_command=True)
 def cli(
     mode: str = typer.Option(..., "--mode", help="eu | global"),
-    countries: Optional[str] = typer.Option(None, "--countries", help="Comma-separated ISO2 list, e.g. DE,FR,NL"),
+    countries: str | None = typer.Option(None, "--countries", help="Comma-separated ISO2 list, e.g. DE,FR,NL"),
     start: str = typer.Option(..., "--start", help="YYYY-MM-DD"),
     end: str = typer.Option(..., "--end", help="YYYY-MM-DD"),
-    agg: Optional[str] = typer.Option(None, "--agg", help="hour|day|week|month (aggregation override)"),
+    agg: str | None = typer.Option(None, "--agg", help="hour|day|week|month (aggregation override)"),
     configs_dir: Path = typer.Option(Path("configs"), "--configs-dir", help="Path to configs/"),
 ) -> None:
     m = mode.strip().lower()

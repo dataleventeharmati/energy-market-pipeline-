@@ -1,5 +1,7 @@
 from __future__ import annotations
+
 import pandas as pd
+
 
 def ingest_nbs_cn_stub(*, start: str, end: str) -> pd.DataFrame:
     rows: list[dict] = []

@@ -1,24 +1,22 @@
 from __future__ import annotations
 
-from energy_pipeline.viz.energy_mix import plot_energy_mix_global
-
-from pathlib import Path
-from typing import Literal, Optional
 import os
+from pathlib import Path
+from typing import Literal
 
 import pandas as pd
 from dotenv import load_dotenv
 
+from energy_pipeline.common.cache import raw_path, write_raw_df_parquet
 from energy_pipeline.common.config import load_configs
 from energy_pipeline.common.log import get_logger
-from energy_pipeline.common.cache import raw_path, write_raw_df_parquet
 from energy_pipeline.ingest.entsoe import ingest_entsoe_eu_stub
 from energy_pipeline.ingest.entsoe_live import (
-    fetch_entsoe_generation_by_type_hourly,
     fetch_entsoe_day_ahead_price_hourly,
+    fetch_entsoe_generation_by_type_hourly,
 )
-from energy_pipeline.normalize.aggregate import DQConfig, aggregate_timeseries
 from energy_pipeline.kpi.compute import KPIConfig, compute_kpis
+from energy_pipeline.normalize.aggregate import DQConfig, aggregate_timeseries
 from energy_pipeline.report.run import run_reports
 
 Mode = Literal["eu", "global"]
@@ -27,7 +25,7 @@ AggLevel = Literal["hour", "day", "week", "month"]
 log = get_logger(__name__)
 
 
-def _resolve_agg_level(cfg_kpi: dict, *, mode: Mode, agg_override: Optional[str]) -> AggLevel:
+def _resolve_agg_level(cfg_kpi: dict, *, mode: Mode, agg_override: str | None) -> AggLevel:
     if mode == "eu":
         default_level = (cfg_kpi.get("eu", {}) or {}).get("aggregation", "day")
     else:
@@ -121,7 +119,7 @@ def run_pipeline(
             countries=countries or ["DE"], start=start, end=end
         )
     else:
-        from energy_pipeline.ingest.ember import fetch_ember_monthly, ember_to_long_kpi
+        from energy_pipeline.ingest.ember import ember_to_long_kpi, fetch_ember_monthly
         ember_df = fetch_ember_monthly()
         raw_df = ember_to_long_kpi(ember_df, configs_dir=configs_dir)
         raw_source, raw_kind = "ember", "monthly_kpi"

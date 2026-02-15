@@ -1,5 +1,7 @@
 from __future__ import annotations
+
 import pandas as pd
+
 
 def ingest_entsoe_eu_stub(*, countries: list[str], start: str, end: str) -> pd.DataFrame:
     rows: list[dict] = []

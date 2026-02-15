@@ -1,5 +1,7 @@
 from __future__ import annotations
+
 import pandas as pd
+
 
 def ingest_eia_us_stub(*, start: str, end: str) -> pd.DataFrame:
     rows: list[dict] = []

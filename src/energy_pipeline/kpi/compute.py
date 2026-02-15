@@ -1,6 +1,8 @@
 from __future__ import annotations
+
 from dataclasses import dataclass
 from typing import Literal
+
 import pandas as pd
 
 Period = Literal["hour", "day", "week", "month"]

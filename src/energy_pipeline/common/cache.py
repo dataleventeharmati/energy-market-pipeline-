@@ -8,6 +8,7 @@ from typing import Any
 
 import pandas as pd
 
+
 @dataclass(frozen=True)
 class CachePaths:
     raw_dir: Path = Path("data/raw")
