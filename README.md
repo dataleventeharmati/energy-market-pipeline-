@@ -109,3 +109,8 @@ flowchart LR
   COMMON --- KPI
   COMMON --- REPORT
 ```
+
+
+## Dashboard Preview
+
+![Dashboard Preview](docs/dashboard.png)
