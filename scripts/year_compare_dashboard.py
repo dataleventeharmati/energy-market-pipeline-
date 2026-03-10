@@ -1,7 +1,8 @@
 from pathlib import Path
+
+import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
-import matplotlib.pyplot as plt
 
 DATA = Path("data/reports/year_comparison_2015_2024.csv")
 

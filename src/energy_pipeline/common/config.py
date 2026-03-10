@@ -1,6 +1,9 @@
 from __future__ import annotations
+
 from pathlib import Path
+
 import yaml
+
 
 def _read_yaml(path: Path) -> dict:
     if not path.exists():

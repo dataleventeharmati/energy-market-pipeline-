@@ -3,14 +3,13 @@ from __future__ import annotations
 import json
 import os
 import subprocess
-from pathlib import Path
 from datetime import date
+from pathlib import Path
 
 import pandas as pd
 import streamlit as st
+from PIL import Image
 
-
-import pandas as pd
 
 def _dash_clean_df(df: pd.DataFrame) -> pd.DataFrame:
     """Dashboard display helper: hide all-empty cols, replace NaN with '—'."""
@@ -26,7 +25,7 @@ def _dash_clean_df(df: pd.DataFrame) -> pd.DataFrame:
     return out
 
 
-from PIL import Image
+
 
 def _is_valid_png(path: Path) -> bool:
     try:
@@ -231,7 +230,6 @@ st.divider()
 
 st.subheader("Charts gallery")
 
-from PIL import Image
 
 def _is_valid_png(path: Path) -> bool:
     try:

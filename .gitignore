@@ -1,21 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Virtual environments
 .venv/
-__pycache__/
-*.pyc
+venv/
+env/
+
+# Coverage / build
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Secrets / env
 .env
-data/raw/
-data/reports/charts/
 
-# local secrets
-.env
-.env.*
+# Runtime reports / artifacts
+data/reports/*.json
+data/reports/*.csv
 
-# data artifacts (generated)
-data/raw/
-data/reports/
-*.parquet
-*.log
+# Keep reports folder if needed
+!data/reports/.gitkeep
 
-# python build artifacts
-src/*.egg-info/
-__pycache__/
-*.pyc
+# Archives
+*.zip

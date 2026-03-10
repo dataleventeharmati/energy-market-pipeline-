@@ -2,9 +2,11 @@ from __future__ import annotations
 
 import re
 from pathlib import Path
-import requests
+
 import pandas as pd
+import requests
 import yaml
+
 
 def _extract_csv_url(html: str) -> str | None:
     # best-effort: első .csv link

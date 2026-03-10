@@ -5,7 +5,6 @@ from typing import Literal
 
 import pandas as pd
 
-
 CompareMode = Literal["abs", "pct"]
 
 

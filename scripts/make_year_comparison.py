@@ -1,10 +1,11 @@
 from __future__ import annotations
 
 from pathlib import Path
+
 import pandas as pd
 
-from energy_pipeline.runner.pipeline import run_pipeline
 from energy_pipeline.config.eu import EU27_ISO2
+from energy_pipeline.runner.pipeline import run_pipeline
 
 OUT_PATH = Path("data/reports/year_comparison_2015_2024.csv")
 

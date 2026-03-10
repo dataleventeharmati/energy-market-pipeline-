@@ -1,8 +1,15 @@
 from __future__ import annotations
+
 import pandas as pd
 
-from .export import ExportPaths, export_kpi_history_csv, export_kpi_latest_json, export_dq_latest_json
-from .charts import chart_energy_mix, chart_price_vs_mix, chart_global_comparison
+from .charts import chart_energy_mix, chart_global_comparison, chart_price_vs_mix
+from .export import (
+    ExportPaths,
+    export_dq_latest_json,
+    export_kpi_history_csv,
+    export_kpi_latest_json,
+)
+
 
 def run_reports(kpi: pd.DataFrame, dq_bucket: pd.DataFrame | None, *, period: str, paths: ExportPaths | None = None) -> dict:
     paths = paths or ExportPaths()

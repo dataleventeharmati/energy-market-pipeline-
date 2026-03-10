@@ -1,6 +1,7 @@
 from pathlib import Path
-import pandas as pd
+
 import matplotlib.pyplot as plt
+import pandas as pd
 
 # ---------- PATHS ----------
 DATA_PATH = Path("data/reports/year_comparison_2015_2024.csv")
