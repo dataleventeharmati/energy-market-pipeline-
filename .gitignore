@@ -36,3 +36,5 @@ data/reports/*.csv
 
 # Archives
 *.zip
+data/raw/
+data/reports/charts/
