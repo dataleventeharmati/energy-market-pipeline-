@@ -76,6 +76,8 @@ def compute_kpis(ts: pd.DataFrame, dq_bucket: pd.DataFrame | None, *, cfg: KPICo
         ignore_index=True,
     ).drop_duplicates()
 
+    keys_union["ts_utc"] = pd.to_datetime(keys_union["ts_utc"], utc=True)
+
     out = keys_union.merge(pivot, on=key, how="left").merge(p, on=key, how="left").merge(net, on=key, how="left")
     out = out.rename(columns={"ts_utc": "period_start_utc"})
     out["period"] = period_val
