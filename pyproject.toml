@@ -17,6 +17,7 @@ dependencies = [
   "matplotlib",
   "python-dotenv",
   "pyyaml",
+  "entsoe-py",
 ]
 
 [project.optional-dependencies]
