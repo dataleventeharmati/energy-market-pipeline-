@@ -5,7 +5,7 @@ import pandas as pd
 
 def ingest_entsoe_eu_stub(*, countries: list[str], start: str, end: str) -> pd.DataFrame:
     rows: list[dict] = []
-    hours = pd.date_range(start=start, end=end, freq="H", inclusive="left", tz="UTC")
+    hours = pd.date_range(start=start, end=end, freq="h", inclusive="left", tz="UTC")
     for c in countries:
         for ts in hours:
             rows += [

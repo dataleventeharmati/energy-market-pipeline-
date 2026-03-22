@@ -3,7 +3,7 @@ from energy_pipeline.kpi.compute import KPIConfig, compute_kpis
 
 def test_kpi_basic():
     ts = pd.DataFrame({
-        "ts_utc": ["2026-01-01T00:00:00Z", "2026-01-01T00:00:00Z"],
+        "ts_utc": pd.to_datetime(["2026-01-01T00:00:00Z", "2026-01-01T00:00:00Z"], utc=True),
         "region": ["EU", "EU"],
         "country": ["Germany", "Germany"],
         "metric": ["price", "generation"],
@@ -13,7 +13,7 @@ def test_kpi_basic():
     })
 
     dq_bucket = pd.DataFrame({
-        "ts_utc": ["2026-01-01T00:00:00Z"],
+        "ts_utc": pd.to_datetime(["2026-01-01T00:00:00Z"], utc=True),
         "region": ["EU"],
         "country": ["Germany"],
         "period": ["day"],
